@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static',filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static',filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+  <body>
+
+<nav class="black" role="navigation">
+    
+
+      <ul class="left-align">
+        <li><a href="/">Home</a></li>
+        <li><a href="/api/search">Search</a></li>
+      </ul>
+
+  </nav>
+   <div class="row center">
+  <h1> Bad Search. Please review your inputs and try again.</h1> 
+<h3>Remember, you must have a location or restaurant phone number entered.</h3>
+  </div>
+ </body>
+</html>

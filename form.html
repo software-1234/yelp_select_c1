@@ -1,0 +1,148 @@
+<html>
+   <head>
+      <title>Search Form</title>
+
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>	       
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+   </head>
+   
+	<body> 
+       <nav class="black" role="navigation">
+        <ul class="left-align">
+         <li><a href="/">Home</a></li>
+         <li><a href="/api/search">Search</a></li>
+        </ul>
+       </nav>
+ 
+      <div class="row">
+
+         <form action="/api/search" method="POST" class="col s12">
+  <div class="col s12"><span class="flow-text">
+<h3> To do a search, either a location or phone number is required.
+</h3>
+</span>
+</div>
+
+<h4> If you want to search by the phone number of a restaurant, please click <a href="#phone">here</a></h4>
+	    <div class="row">
+               <div class="input-field col s12">
+                  <i class="material-icons prefix">my_location</i>
+                  <input id="place" name="place" type="text" class="active validate">
+                  <label for="place">Place (Zip Code, City, or State)</label>
+               </div>
+            </div>
+
+
+            <div class="row">
+               <div class="input-field col s12">
+                  <i class="material-icons prefix">search</i>
+                  <input id="term" name="term" type="text" class="active validate">
+                  <label for="term">Search Term (Cuisine, Name, Bars etc.)</label>
+               </div>
+
+            </div>
+
+          
+<h5> Currently Open?</h5>	
+	<p>
+        <input type="checkbox" id="open" name="open" class="checked">
+        <label for="open">Yes</label>
+        </p>
+    <h5>Number of Results from 1 to 50 </h5>
+		
+	<p class="range-field"> <input type="range" name="limit" id="test5" min="1" max="50" value="25"> </p>
+	
+      <div class="row">
+       <div class="input-field col s12">
+	<h5> Price Choices </h5>
+		  <p>
+                     <input id="price1" name="price1" type="checkbox" class="checked">       		     
+
+		     <label for="price1">$: &#60$10</label>
+                  </p>
+		
+
+		     <label for="price1">$ </label>
+                  </p>		
+
+                 <p>
+                     <input id="price2" name="price2" type="checkbox" class="checked">        
+                     <label for="price2">$$: $11-$30</label>
+                  </p>
+                 <p>
+                     <input id="price3" name="price3" type="checkbox" class="checked">        
+                     <label for="price3">$$$: $31-$60</label>
+                  </p>
+                  <p>
+                     <input id="price4" name="price4" type="checkbox" class="checked">              
+                     <label for="price4">$$$$: &gt$60</label>
+                  </p>
+               </div>
+            </div>
+	<p></p>
+
+                   <h5>
+		     Change Sort Type
+		</h5>
+		<p></p>
+		<p>Note: The rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a bayesian average.</p>
+
+ 
+<input name="offset" type="hidden" value="0" />
+      <p>
+      <input name="default" type="radio" checked="checked" id="test1" value="best_match" />
+      <label for="test1">Best Match</label>
+    </p>
+
+      <p>
+      <input name="default" type="radio" id="test2" value="review_count" />
+      <label for="test2">Most Ratings</label>
+    </p>
+    <p>
+      <input name="default" type="radio" id="test3" value="rating" />
+      <label for="test3">Best Ratings</label>
+    </p>
+      <p>
+      <input name="default" type="radio" id="test4" value="distance" />
+      <label for="test4">Distance from Entered Location</label>
+     </p>
+<p></p>
+
+
+ 	<h4> Or Search By Phone Number (US Only)</h4>
+            <div class="row">
+               <div class="input-field col s12">
+                   <i class="material-icons prefix">phone</i>
+                  <input id="phone" name="phone" type="text" class="active validate">
+                  <label for="phone">Restaurant Phone Number w/ Area Code (US Only)</label>
+            </div>
+
+        </div>
+         <div class="row">
+               <div class="input-field col s12">
+                   <p>
+                   <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+                  </p>
+               </div>
+            </div>
+  	  </button>           
+         </form>       
+ 
+      </div>
+
+
+      <footer class="page-footer black">  
+       <div class="footer-copyright">
+        <div class="container">© 2017 Eric Zhou </div>
+       </div>
+      </footer>
+
+
+  </body>   
+ 
+</html>

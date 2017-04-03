@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Restuarants, Prices, Choice... Oh My!</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static',filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link href="{{ url_for('static',filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+       body{
+	font-family: 'Raleway', sans-serif;
+	}
+       #map {
+        height: 500px;
+        width: 100%;
+       }
+	ul {
+    margin: 0 auto;
+    text-align: left;
+}
+</style>
+
+  <title>Search Results</title> 
+  
+</head>
+
+<body>
+  <nav class="black" role="navigation">
+    
+
+      <ul class="left-align">
+        <li><a href="/">Home</a></li>
+        <li><a href="/api/search">Search</a></li>
+       
+      </ul>
+
+
+    
+  </nav>
+<h1 class="header center blue-text">Map</h1>
+
+
+   <div style="height:100%; width:100%;">
+   <div id="map"></div>
+   </div>
+   <script>
+      function initMap() {
+        var infowindow = new google.maps.InfoWindow();
+        var center= {lat: {{my_list[0][7]}}, lng: {{my_list[0][6]}}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: center,
+
+        });
+var i=0;
+var gmarkers = [];
+
+{%for n in my_list %}
+
+
+         var place = {lat: {{n[4]}}, lng: {{n[5]}}};
+        var marker = new google.maps.Marker({
+        position: place,
+        map: map
+        });
+        gmarkers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent('{{n[0]}}');
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+i++;
+    {% endfor %}
+
+      }
+    </script>
+
+
+
+
+
+<h1 class="header center orange-text">Results</h1>
+   <ul style="list-style-type:none">
+  
+<div class="row">
+  {%for n in my_list %} 
+
+
+   <div class="col s12 m8 l6">  
+
+     <div class="card center-align z-depth-5">
+   		<div class="card-image">  
+              <img class="responsive-image" width="auto" height="400" src="{{n[11]}}" > 
+             <span  class="card-title black">{{n[0]}} </span> 
+              </div>
+
+          
+	     <div class="card-content orange lighten-2">
+	     <p>              
+ <li>Phone: <a href="tel:{{n[12]}}">{{n[2]}}</a></li>
+        
+<address>              
+	{% if (n[10][0]) %}
+		{% if (n[10][1]) %}
+			{% if (n[10][2]) %}
+			<li>Address: {{n[10][0]}}, {{n[10][1]}}, {{n[10][2]}}</li>
+			{% else %}
+			<li>Address: {{n[10][0]}}, {{n[10][1]}}</li>
+			{% endif %}
+ 		{% else %}
+        	<li>Address: Not Listed <br></li>
+		{% endif %}
+	{% endif %}
+</address>
+	<li>Rating: {{n[3]}}</li>
+
+	<li>{{n[8]}}</li>
+	<li>Number of Reviews: {{n[9]}}</li>
+</p>
+</div>	
+
+            <div class="card-action black">
+              <a href={{n[1]}}>Link to Yelp Site</a>
+	     <a href="#map">Back to Map</a>
+       </div>      
+
+</div>
+</div>
+    
+
+        {% endfor %}
+
+</div>
+</ul>
+
+{% if (offset<num_businesses) %}
+
+ <form action="/api/search" method="POST">
+
+<input id="term" name="term" type="hidden" value="{{term}}">
+<input id="price" name="price" type="hidden" value="{{price}}">
+<input id="offset" name="offset" type="hidden" value="{{offset}}">
+<input id="place" name="place" type="hidden" value="{{place}}">
+<input id="limit" name="limit" type="hidden" value="{{limit}}">
+<input id="open" name="open" type="hidden" value="{{open}}">
+<input id="default" name="default" type="hidden" value="{{default}}">
+<input id="num_businesses" name="num_businesses" type="hidden" value="{{num_businesses}}">
+<input id="current" name="current" type="hidden" value="{{current}}">
+	    <div class="row center">
+                  
+                   <button class="btn-large waves-effect center-btn waves-light" type="submit" name="action">Next Page of Results
+    <i class="material-icons right">send</i>
+             </div>
+</form>
+
+{%endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbjNi0LWa4q9VGF7fieWb3afrdMOrYbhM&callback=initMap"> </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+
+
+ <footer class="page-footer black">
+<div class="footer-copyright">
+            <div class="container">
+            © 2017 Eric Zhou
+            </div>
+          </div>
+        </footer>
+
+
+
+</body>
+</html>
