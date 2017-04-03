@@ -9,12 +9,21 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="{{ url_for('static',filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{{ url_for('static',filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/> 
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Macondo|Lato|Indie+Flower|Shadows+Into+Light|Ruda" rel="stylesheet">
 <style>
 h5 {
 font-family: 'Lato', sans-serif;
   background-color: white;
-
+}
+h1 {
+font-family: 'Press Start 2P', cursive;
+}
+h4 {
+font-family: 'Macondo', cursive;
+}
+p{
+font-family: 'Ruda', sans-serif;
+font-size: 150%;
 }
 </style>
 
@@ -36,7 +45,7 @@ font-family: 'Lato', sans-serif;
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Restaurant Selector</h1>
         <div class="row center">
-          <h4 class="header col s12 light">Finding a place to eat can be hard...</h4>
+          <h4 class="header col s12 light">Finding a place to eat at can be hard...</h4>
         </div>
         <div class="row center">
           <a href="/api/search" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
@@ -59,11 +68,11 @@ font-family: 'Lato', sans-serif;
     <div class="section">
 
       <!--   Icon Section   -->
-      <div class="row red">
+      <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center green-text"><i class="material-icons">my_location</i></h2>
-            <h5 class="center z-depth-5">Search By Location and Term</h5>
+            <h5 class="center blue-grey-text text-darken-3 z-depth-5">Search By Location and Term</h5>
             <p> Searching for a place to eat at has never been easier</p>
           </div>
         </div>
@@ -71,7 +80,7 @@ font-family: 'Lato', sans-serif;
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center blue-text"><i class="material-icons">contact_phone</i></h2>
-            <h5 class="center z-depth-5">Search By Phone Number</h5>
+            <h5 class="center blue-grey-text text-darken-3 z-depth-5">Search By Phone Number</h5>
           <p>Search by restaurant phone number</p>
          </div>
         </div>
@@ -79,7 +88,7 @@ font-family: 'Lato', sans-serif;
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center orange-text"><i class="material-icons">credit_card</i></h2>
-            <h5 class="center z-depth-5">Search By Price </h5> 
+            <h5 class="center blue-grey-text text-darken-3 z-depth-5">Search By Price </h5> 
             <p> Use the price feature to locate restaurants that fit comfortably within your budget. </p>
          </div>
         </div>
