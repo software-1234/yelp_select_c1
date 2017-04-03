@@ -161,8 +161,7 @@ def search(term, location, sort,limit,open, offset):
     """
     #int offset=0;
     #if (offset==0):
-    if offset+limit<1000:
-   	print('ffffff') 
+    if offset+limit<1000: 
 	url_params = {
     	'term': term.replace(' ', '+'),
     	'location': location.replace(' ', '+'),

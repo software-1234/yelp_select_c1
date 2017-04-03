@@ -73,7 +73,7 @@ var gmarkers = [];
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent('{{n[0]}}');
+          infowindow.setContent('{{n[0]}} <br> {{n[10][0]}} <br> {{n[10][1]}} <br> {{n[10][2]}}');
           infowindow.open(map, marker);
         }
       })(marker, i));
@@ -96,7 +96,7 @@ i++;
 
    <div class="col s12 m8 l6">  
 
-     <div class="card center-align z-depth-5">
+     <div class="card large center-align z-depth-5">
    		<div class="card-image">  
               <img class="responsive-image" width="auto" height="400" src="{{n[11]}}" > 
              <span  class="card-title black">{{n[0]}} </span> 
@@ -156,22 +156,12 @@ i++;
 <input id="current" name="current" type="hidden" value="{{current}}">
 	    <div class="row center">
                   
-                   <button class="btn-large waves-effect center-btn waves-light" type="submit" name="action">Next Page of Results
+                   <button class="btn-large waves-effect center-btn waves-light" type="submit" name="action"> Didn't Find Anything That Caught Your Eye? Click Here to go to the Next Page
     <i class="material-icons right">send</i>
              </div>
 </form>
 
 {%endif %}
-
-
-
-
-
-
-
-
-
-
 
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbjNi0LWa4q9VGF7fieWb3afrdMOrYbhM&callback=initMap"> </script>
@@ -183,7 +173,7 @@ i++;
  <footer class="page-footer black">
 <div class="footer-copyright">
             <div class="container">
-            © 2017 Eric Zhou
+            © 2017 Eric Zhou <br> Images Courtesy of Yelp <br> Map Courtesy of Google Maps 
             </div>
           </div>
         </footer>
